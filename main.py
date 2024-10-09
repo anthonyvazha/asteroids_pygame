@@ -1,20 +1,26 @@
 import pygame
+from constants import *
 
-# Initialize pygame
-pygame.init()
 
-# Set up the display
-screen = pygame.display.set_mode((640, 480))
 
-# Set a simple title for the window
-pygame.display.set_caption("Pygame Test")
 
-# Main game loop
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+def main():
+    print('Starting asteroids!')
+    pygame.get_init()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    dt = 0
 
-# Quit pygame
-pygame.quit()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+        
+        screen.fill('black')
+        pygame.display.flip()
+        # limit the frame rate to 60 fps
+        dt = clock.tick(60) / 1000
+
+
+if __name__ == "__main__":
+    main()
